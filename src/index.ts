@@ -1,12 +1,14 @@
-import express from "express";
+import express, { Express, Request, Response } from "express";
+import { createServer, Server } from "http";
 
-const app = express();
-const port = process.env.PORT || 8080;
+const app: Express = express();
+const server: Server = createServer(app);
+const port: string | number = process.env.PORT ?? 8080;
 
-app.get("/", (req, res) => {
+app.get("/", (req: Request, res: Response) => {
   res.send("Hello from stream");
 });
 
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`stream listening at http://localhost:${port}`);
 });
